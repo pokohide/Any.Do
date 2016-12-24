@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SWTableViewCell
 
 class ViewController: UITableViewController {
     
@@ -38,7 +39,7 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30.0
+        return 50.0
     }
     
     override func viewDidLoad() {
@@ -52,14 +53,13 @@ class ViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addButton
     }
     
-    override func tableView(_ tableView: UITableView, commitEditing)
-    
-    // 削除する奴
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        // delete を押したところの場所
-        let index = indexPath.row
-        
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            items.remove(at: indexPath.row)
+            tableView.reloadData()
+        } else if editingStyle == .insert {
+            // create
+        }
     }
     
     func onClickAddButton(sender: UIBarButtonItem) {
