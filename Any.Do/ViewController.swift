@@ -45,18 +45,23 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
+
         self.view.backgroundColor = UIColor.cyan
-        self.title = "My Navigation"
-        
+        self.title = "Any.Do"
+
         addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ViewController.onClickAddButton(sender:)))
         self.navigationItem.rightBarButtonItem = addButton
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+
+            tableView.beginUpdates()
             items.remove(at: indexPath.row)
-            tableView.reloadData()
+            let indexPaths = NSIndexPath(row: indexPath.row, section: indexPath.section)
+            tableView.deleteRows(at: [indexPaths as IndexPath], with: .automatic)
+            tableView.endUpdates()
+
         } else if editingStyle == .insert {
             // create
         }
