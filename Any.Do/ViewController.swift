@@ -9,7 +9,7 @@
 import UIKit
 import SWTableViewCell
 
-class ViewController: UITableViewController {
+class ViewController: UITableViewController, SWTableViewCellDelegate {
     
     private var addButton: UIBarButtonItem!
     
@@ -17,15 +17,14 @@ class ViewController: UITableViewController {
 
     // MARK: -UITableView DataSource / Delegate
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if let items = items {
-//            return items.count
-//        }
-        return items.count //|| 0
+        return items.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) //as! SWTableViewCell
+        //cell.leftUtilityButtons = self.getLeftUtilityButtonsToCell() as [AnyObject]
+        //cell.delegate = self
         
 //        let df = DateFormatter()
 //        df.locale = Locale(identifier: "ja_JP")
@@ -41,7 +40,7 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50.0
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -52,7 +51,7 @@ class ViewController: UITableViewController {
         addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ViewController.onClickAddButton(sender:)))
         self.navigationItem.rightBarButtonItem = addButton
     }
-    
+
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
 
@@ -66,14 +65,31 @@ class ViewController: UITableViewController {
             // create
         }
     }
-    
-    func onClickAddButton(sender: UIBarButtonItem) {
-        items.append("追加したよ")
-        tableView.reloadData()
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    func onClickAddButton(sender: UIBarButtonItem) {
+        items.append("追加したよ")
+        tableView.reloadData()
+    }
+    
+    private func getLeftUtilityButtonsToCell() -> NSMutableArray {
+        let utilityButtons: NSMutableArray = NSMutableArray()
+        utilityButtons.sw_addUtilityButton(with: UIColor.red, title: NSLocalizedString("Delete", comment: ""))
+        utilityButtons.sw_addUtilityButton(with: UIColor.yellow, title: NSLocalizedString("Edit", comment: ""))
+        return utilityButtons
+    }
+    
+    internal func swipeableTableViewCell(_ cell: SWTableViewCell!, didTriggerLeftUtilityButtonWith index: Int) {
+        switch index {
+        case 0:
+            print("Push Delete Button")
+        case 1:
+            print("Push Edit Button")
+        default:
+            print("other")
+        }
+    }
 }
