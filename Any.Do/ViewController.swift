@@ -30,7 +30,7 @@ class ViewController: UITableViewController, SWTableViewCellDelegate {
 //        df.locale = Locale(identifier: "ja_JP")
 //        df.timeZone = TimeZone.current
 //        df.dateFormat = "MM/dd"
-//        let dateStr = df.string(from: entry.publishedDate as Date)
+//        let dateStr = df.string(from: entry.publishedDate as Date)/Users/pokohide/work/pokohide/Any.Do/Any.Do/ToDoTableViewCell.swift
         
         //cell.titleLabel.text = [dateStr,entry.title].joined(separator: " ")
         cell.textLabel?.text = items[indexPath.row]
@@ -71,8 +71,14 @@ class ViewController: UITableViewController, SWTableViewCellDelegate {
     }
 
     func onClickAddButton(sender: UIBarButtonItem) {
-        items.append("追加したよ")
-        tableView.reloadData()
+        let newToDo = self.storyboard!.instantiateViewController(withIdentifier: "newToDo") as! NewToDoViewController
+        self.present(newToDo, animated: true, completion: nil)
+        
+        
+//        
+//        
+//        items.append("追加したよ")
+//        tableView.reloadData()
     }
     
     private func getLeftUtilityButtonsToCell() -> NSMutableArray {
