@@ -16,6 +16,7 @@
 		61457BB11E0EF43C00209325 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61457BAF1E0EF43C00209325 /* LaunchScreen.storyboard */; };
 		61457BBC1E0EF43C00209325 /* Any_DoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61457BBB1E0EF43C00209325 /* Any_DoTests.swift */; };
 		61457BC71E0EF43C00209325 /* Any_DoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61457BC61E0EF43C00209325 /* Any_DoUITests.swift */; };
+		61457BD61E0EF9D400209325 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61457BD51E0EF9D400209325 /* ToDo.swift */; };
 		9FDE32920C2479689283A6C5 /* Pods_Any_DoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6CFAD467468A0C82024799 /* Pods_Any_DoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		61457BC21E0EF43C00209325 /* Any.DoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Any.DoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61457BC61E0EF43C00209325 /* Any_DoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Any_DoUITests.swift; sourceTree = "<group>"; };
 		61457BC81E0EF43C00209325 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61457BD51E0EF9D400209325 /* ToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		7A09A95CE3128D61D974429A /* Pods-Any.Do.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Any.Do.release.xcconfig"; path = "Pods/Target Support Files/Pods-Any.Do/Pods-Any.Do.release.xcconfig"; sourceTree = "<group>"; };
 		8C606817D3C82EF5277ED58F /* Pods_Any_Do.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Any_Do.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA609DE473FA6F9DB059EEDD /* Pods-Any.Do.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Any.Do.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Any.Do/Pods-Any.Do.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,8 +129,9 @@
 		61457BA51E0EF43C00209325 /* Any.Do */ = {
 			isa = PBXGroup;
 			children = (
+				61457BD71E0EFF6B00209325 /* ViewController */,
+				61457BD41E0EF99B00209325 /* Model */,
 				61457BA61E0EF43C00209325 /* AppDelegate.swift */,
-				61457BA81E0EF43C00209325 /* ViewController.swift */,
 				61457BAA1E0EF43C00209325 /* Main.storyboard */,
 				61457BAD1E0EF43C00209325 /* Assets.xcassets */,
 				61457BAF1E0EF43C00209325 /* LaunchScreen.storyboard */,
@@ -153,6 +156,22 @@
 				61457BC81E0EF43C00209325 /* Info.plist */,
 			);
 			path = Any.DoUITests;
+			sourceTree = "<group>";
+		};
+		61457BD41E0EF99B00209325 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				61457BD51E0EF9D400209325 /* ToDo.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		61457BD71E0EFF6B00209325 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				61457BA81E0EF43C00209325 /* ViewController.swift */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 		E7955D0BE2D21E9E2F38A3C3 /* Frameworks */ = {
@@ -446,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61457BD61E0EF9D400209325 /* ToDo.swift in Sources */,
 				61457BA91E0EF43C00209325 /* ViewController.swift in Sources */,
 				61457BA71E0EF43C00209325 /* AppDelegate.swift in Sources */,
 			);
@@ -696,6 +716,7 @@
 				61457BCD1E0EF43C00209325 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		61457BCE1E0EF43C00209325 /* Build configuration list for PBXNativeTarget "Any.DoTests" */ = {
 			isa = XCConfigurationList;
@@ -704,6 +725,7 @@
 				61457BD01E0EF43C00209325 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		61457BD11E0EF43C00209325 /* Build configuration list for PBXNativeTarget "Any.DoUITests" */ = {
 			isa = XCConfigurationList;
@@ -712,6 +734,7 @@
 				61457BD31E0EF43C00209325 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
