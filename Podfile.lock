@@ -4,14 +4,17 @@ PODS:
   - Realm/Headers (2.1.2)
   - RealmSwift (2.1.2):
     - Realm (= 2.1.2)
+  - SWTableViewCell (0.3.7)
 
 DEPENDENCIES:
   - RealmSwift
+  - SWTableViewCell (~> 0.3.7)
 
 SPEC CHECKSUMS:
   Realm: efe855f4d977c8ce5a82d3116d9f1ff155a6550c
   RealmSwift: 17d6ee30b6f9df86364408c2197492e33bfea567
+  SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-PODFILE CHECKSUM: a6e4e58b17241495ace1ae14f068aef4bba4fd67
+PODFILE CHECKSUM: 6260204242198a6ccdbcda15a80e14032a8dc9a6
 
 COCOAPODS: 1.1.1

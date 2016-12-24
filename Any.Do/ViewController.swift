@@ -52,6 +52,16 @@ class ViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addButton
     }
     
+    override func tableView(_ tableView: UITableView, commitEditing)
+    
+    // 削除する奴
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // delete を押したところの場所
+        let index = indexPath.row
+        
+    }
+    
     func onClickAddButton(sender: UIBarButtonItem) {
         items.append("追加したよ")
         tableView.reloadData()
