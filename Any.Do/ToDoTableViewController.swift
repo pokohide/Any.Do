@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ToDoTableViewController: UITableViewController {
 
@@ -15,12 +16,15 @@ class ToDoTableViewController: UITableViewController {
     @IBOutlet weak var addButton: UIBarButtonItem!
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoList.items.count
+        if let items = todoList.items {
+            return items.count
+        }
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as! ToDoTableViewCell
-        cell.initCell(todo: todoList.items[indexPath.row])
+        cell.todo = (todoList.items?[indexPath.row])!
         return cell
     }
     
@@ -39,7 +43,16 @@ class ToDoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
-            todoList.items.remove(at: indexPath.row)
+            
+            do {
+                let realm = try Realm()
+                try realm.write {
+                    realm.delete((todoList.items?[indexPath.row])!)
+                }
+            } catch {
+                print("realm delete error")
+            }
+
             let indexPaths = NSIndexPath(row: indexPath.row, section: indexPath.section)
             tableView.deleteRows(at: [indexPaths as IndexPath], with: .automatic)
             tableView.endUpdates()
@@ -51,7 +64,23 @@ class ToDoTableViewController: UITableViewController {
     }
 
     func onClickAddButton(sender: UIBarButtonItem) {
-        todoList.items.append(ToDoList.ToDoModel(name: "追加した", date: "hogehoge", body: "hogehogehoge"))
+//        todoList.items.append(ToDoList.ToDoModel(name: "追加した", date: "hogehoge", body: "hogehogehoge"))
+//        tableView.reloadData()
+        
+        let toDo = ToDo()
+        toDo.name = "追加した"
+        toDo.body = "hogehogehoge"
+        toDo.deadLine = Date() as NSDate
+        toDo.isComplete = false
+        
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.add(toDo)
+            }
+        } catch {
+            print("realm write error")
+        }
         tableView.reloadData()
     }
 }

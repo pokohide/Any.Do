@@ -13,18 +13,21 @@ class ToDoTableViewCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet private weak var name: UILabel!
     @IBOutlet private weak var date: UILabel!
-
+    
+    var todo: ToDo? {
+        didSet {
+            let format = DateFormatter()
+            format.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            name.text = todo?.name
+            date.text = format.string(from: todo?.deadLine as! Date)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    }
-    
-    func initCell(todo: ToDoList.ToDoModel) {
-        
-        name.text = todo.name
-        date.text = todo.date
     }
 }
