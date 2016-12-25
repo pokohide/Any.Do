@@ -10,20 +10,21 @@ import UIKit
 
 class ToDoTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    
+    // MARK: - Outlets
+    @IBOutlet private weak var name: UILabel!
+    @IBOutlet private weak var date: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
+    
+    func initCell(todo: ToDoList.ToDoModel) {
+        
+        name.text = todo.name
+        date.text = todo.date
+    }
 }
-
-

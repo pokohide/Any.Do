@@ -12,6 +12,7 @@ import RealmSwift
 class ToDo: Object {
     
     dynamic var name = ""
+    dynamic var body = ""
     dynamic var deadLine = NSDate(timeIntervalSince1970: 0)
     dynamic var isComplete = false
     
