@@ -177,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				61EEC00C1E10472D0097A2C7 /* ToDo */,
-				61457BE11E0F2A7200209325 /* NewToDoViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -203,6 +202,7 @@
 			children = (
 				61457BD91E0F1E2A00209325 /* ToDoTableViewCell.swift */,
 				61457BA81E0EF43C00209325 /* ToDoTableViewController.swift */,
+				61457BE11E0F2A7200209325 /* NewToDoViewController.swift */,
 			);
 			name = ToDo;
 			sourceTree = "<group>";

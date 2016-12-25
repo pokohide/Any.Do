@@ -10,15 +10,49 @@ import Foundation
 import RealmSwift
 
 class ToDoList {
-    //private var items: [ToDo] = []
-    
+
     var items: Results<ToDo>? {
+        let realm = try! Realm()
+        return realm.objects(ToDo.self)
+    }
+    
+    func delete(index: Int) {
         do {
             let realm = try Realm()
-            return realm.objects(ToDo.self)
+            try realm.write {
+                realm.delete((items?[index])!)
+            }
         } catch {
-            print("error occured")
+            print("realm delete error")
         }
-        return nil
+    }
+    
+    func create(name: String, body: String, deadline: Date) {
+        let toDo = ToDo()
+        toDo.name = name
+        toDo.body = body
+        toDo.deadline = deadline as NSDate
+        toDo.isComplete = false
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.add(toDo)
+            }
+        } catch {
+            print("realm add error")
+        }
+    }
+    
+    func update(todo: ToDo?, name: String, body: String, deadline: Date) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                todo?.name = name
+                todo?.body = body
+                todo?.deadline = deadline as NSDate
+            }
+        } catch {
+            print("update error")
+        }
     }
 }

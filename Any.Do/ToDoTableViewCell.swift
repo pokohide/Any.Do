@@ -19,7 +19,7 @@ class ToDoTableViewCell: UITableViewCell {
             let format = DateFormatter()
             format.dateFormat = "yyyy-MM-dd HH:mm:ss"
             name.text = todo?.name
-            date.text = format.string(from: todo?.deadLine as! Date)
+            date.text = format.string(from: todo?.deadline as! Date)
         }
     }
     
